@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test>
+    <configs>
+        <config0 value="0" extensions="config8,config9,config10"/>
+        <config1 value="1"/>
+        <config2 value="2">
+            <extensions>config5,config6,config7</extensions>
+            <extensions>config3,config4</extensions>
+        </config2>
+        <config11 value="3">
+            <extensions>config31,config41</extensions>
+            <extensions>config51,config61,config71</extensions>
+        </config11>
+    </configs>
+</test>

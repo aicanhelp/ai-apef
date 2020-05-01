@@ -1,0 +1,13 @@
+<application-exceptions>
+    <global appCode="0" className="">
+        <errCodes/>
+    </global>
+    <applications>
+        <application1 appCode="9999" className="io.apef.base.exception.TestErrorCode">
+            <errCodes>
+                <TIMEOUT severity="MILD" errCode="900001" message="TT"/>
+                <Failure severity="MILD" errCode="900002" message="failure"/>
+            </errCodes>
+        </application1>
+    </applications>
+</application-exceptions>

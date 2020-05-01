@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <test>
+        <name>aaa</name>
+        <cases>
+            <case name="ccc">
+                <ids>
+                    <id value="ddd"/>
+                    <id value="ddd"/>
+                </ids>
+            </case>
+            <case name="ccc1">
+                <id value="ddd"/>
+            </case>
+        </cases>
+    </test>
+</root>

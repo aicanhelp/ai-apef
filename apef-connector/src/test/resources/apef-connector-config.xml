@@ -1,0 +1,34 @@
+<vertx-connectors>
+    <vertx eventLoopPoolSize="8" workerPoolSize="100">
+        <metricsOptions enabled="false"/>
+    </vertx>
+    <k8sFactory>
+        <testK8s port="80" k8sMasterUrl="" nameSpace="" podName=""/>
+    </k8sFactory>
+    <clusters>
+        <k8s>
+            <testCluster k8sName="mock" configNameSpace="config"/>
+        </k8s>
+    </clusters>
+    <httpClientFactory>
+        <cdnClientConnector receiveBufferSize="8096" maxPoolSize="100" sendBufferSize="-1"
+                            connectTimeout="2000" keepAlive="true"/>
+    </httpClientFactory>
+    <httpServerFactory>
+        <manifestConnector port="8097" compressionSupported="false"
+                           timeout="6000">
+            <cors allowedOriginPattern="*"
+                  allowedMethods="GET,POST,OPTIONS"
+                  allowedHeaders="Content-Type,X-TYPE"/>
+        </manifestConnector>
+    </httpServerFactory>
+
+    <tcpClientFactory>
+        <!--the port of mock service is 9999-->
+        <testTcpClient k8sName="mock"/>
+    </tcpClientFactory>
+
+    <tcpServerFactory>
+        <testTcpServer host="localhost" port="9999"/>
+    </tcpServerFactory>
+</vertx-connectors>

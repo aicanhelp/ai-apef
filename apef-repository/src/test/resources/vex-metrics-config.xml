@@ -1,0 +1,15 @@
+<vex-metrics-config>
+
+    <metricsFactory>
+        <redisRepository reporters="default">
+            <timers get="true" save="true" exists="true" getAll="true" putAll="true"/>
+        </redisRepository>
+    </metricsFactory>
+
+    <reporters>
+        <slf4j>
+            <default enabled="true" reportInterval="2" rateUnit="SECONDS"
+                     durationUnit="SECONDS" logger="VEX"/>
+        </slf4j>
+    </reporters>
+</vex-metrics-config>

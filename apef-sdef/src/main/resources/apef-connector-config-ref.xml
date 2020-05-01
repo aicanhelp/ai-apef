@@ -1,0 +1,42 @@
+<vertx-connectors>
+    <vertx eventLoopPoolSize="8" workerPoolSize="100">
+        <metricsOptions enabled="false"/>
+    </vertx>
+
+    <k8sFactory>
+        <manifestK8sService port="80" k8sMasterUrl="" nameSpace="" podName=""/>
+        <adManifestK8sService port="80" k8sMasterUrl="" nameSpace="" podName=""/>
+        <adInsertionK8sService port="80" k8sMasterUrl="" nameSpace="" podName=""/>
+    </k8sFactory>
+
+    <clusters>
+        <k8s>
+            <manifestCluster k8sName="manifestK8sService" configNameSpace="config"/>
+        </k8s>
+    </clusters>
+
+    <httpClientFactory>
+        <cdnClientConnector receiveBufferSize="8096" maxPoolSize="100" sendBufferSize="-1"
+                            connectTimeout="2000" keepAlive="true"/>
+    </httpClientFactory>
+    <httpServerFactory>
+        <manifestConnector port="8080" compressionSupported="false"
+                           timeout="6000">
+            <cors allowedOriginPattern="*"
+                  allowedMethods="GET,POST,OPTIONS"
+                  allowedHeaders="Content-Type,X-TYPE"/>
+        </manifestConnector>
+    </httpServerFactory>
+
+    <tcpClientFactory>
+        <manifestTcpClient k8sName="manifestK8sService"/>
+        <adManifestTcpClient k8sName="adManifestK8sService"/>
+        <adInsertionTcpClient k8sName="adInsertionK8sService"/>
+    </tcpClientFactory>
+
+    <tcpServerFactory>
+        <manifestTcpServer host="" port=""/>
+        <adManifestTcpServer host="" port=""/>
+        <adInsertionTcpServer host="" port=""/>
+    </tcpServerFactory>
+</vertx-connectors>

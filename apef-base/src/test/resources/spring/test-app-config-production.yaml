@@ -1,0 +1,14 @@
+spring:
+  profiles: production
+test-app:
+  name1: d
+  name2: d
+  name3: d
+  name4: d
+  sub:
+    test3:
+      name: aa
+      count: 4
+    test2:
+      name: bb
+      count: 5

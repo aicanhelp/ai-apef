@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root includeRoot="true">
+    <test>
+        <name>aaa</name>
+        <case name="ccc">
+            <id value="ddd"/>
+        </case>
+    </test>
+</root>

@@ -1,0 +1,11 @@
+enumConfigs:
+    live:
+        liveConfig1:
+            name: config1
+        liveConfig2:
+            name: config2
+    vod:
+        vodConfig1:
+            count: 1
+        vodConfig2:
+            count: 2

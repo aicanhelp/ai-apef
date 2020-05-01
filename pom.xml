@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>apef-build</artifactId>
+        <groupId>io.apef</groupId>
+        <version>0.1-SNAPSHOT</version>
+        <relativePath>apef-build/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>apef-parent</artifactId>
+    <packaging>pom</packaging>
+
+    <name>APEF Parent</name>
+
+    <modules>
+        <module>apef-build</module>
+        <module>apef-testing</module>
+        <module>apef-base</module>
+        <module>apef-metrics</module>
+        <module>apef-core</module>
+        <module>apef-sdef</module>
+        <module>apef-connector</module>
+        <module>apef-repository</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.apef</groupId>
+                <artifactId>apef-base</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.apef</groupId>
+                <artifactId>apef-connector</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.apef</groupId>
+                <artifactId>apef-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.apef</groupId>
+                <artifactId>apef-core</artifactId>
+                <version>${project.version}</version>
+                <type>test-jar</type>
+            </dependency>
+            <dependency>
+                <groupId>io.apef</groupId>
+                <artifactId>apef-metrics</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.apef</groupId>
+                <artifactId>apef-repository</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.apef</groupId>
+                <artifactId>apef-sdef</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.apef</groupId>
+                <artifactId>apef-testing</artifactId>
+                <version>${project.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

@@ -1,0 +1,10 @@
+spring:
+    profiles: default
+    main:
+       web_environment: false
+       show_banner: false
+test-app:
+  name1: b
+  name2: b
+  name3: b
+  name4: b

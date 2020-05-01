@@ -1,0 +1,8 @@
+<application>
+    <apis httpServer="default" restContext="/appStatus"/>
+    <project name="${project.name}"
+             version="${project.version}"
+             artifact="${project.artifactId}"/>
+    <build date="${build.date}"
+           revision="${build-commit-abbrev}"/>
+</application>

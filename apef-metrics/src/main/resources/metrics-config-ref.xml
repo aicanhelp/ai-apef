@@ -1,0 +1,32 @@
+<!--This is the reference of Vex Metrics configuration
+  The Vex Metrics configuration file should be {classpath}/vex-metrics-config.xml
+-->
+<vex-metrics-config>
+    <metricsApis rootContext="/metrics"/>
+
+    <metricsFactory>
+        <adsRepository enabled="true" reporters="default">
+            <timers get="true" save="true" exists="true" getAll="true" putAll="true"/>
+        </adsRepository>
+        <cdn enabled="true" reporters="default">
+            <timers get="true" save="true" exists="true" getAll="true" putAll="true"/>
+        </cdn>
+        <Built_Cache enabled="false"/>
+    </metricsFactory>
+
+    <reporters>
+        <slf4j>
+            <default enabled="true" reportInterval="60" rateUnit="SECONDS"
+                     durationUnit="SECONDS" logger="VEX"/>
+            <slf4j1 enabled="true" reportInterval="60" rateUnit="SECONDS"
+                    durationUnit="SECONDS" logger="Ads-Metrics"/>
+        </slf4j>
+
+        <ganglia>
+            <ganglia1 enabled="false" reportInterval="60" rateUnit="SECONDS"
+                      durationUnit="SECONDS" group="group" port="9988"
+                      mode="MULTICAST" ttl="30" version31="true" uuid="129849348377" tMax="60" dMax="0"/>
+        </ganglia>
+    </reporters>
+
+</vex-metrics-config>

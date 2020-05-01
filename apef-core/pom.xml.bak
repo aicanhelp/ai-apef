@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>apef-parent</artifactId>
+        <groupId>io.apef</groupId>
+        <version>0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>apef-core</artifactId>
+    <packaging>jar</packaging>
+    <name>APEF Core - Asynchronous Framework</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.apef</groupId>
+            <artifactId>apef-base</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.apef</groupId>
+            <artifactId>apef-metrics</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.reactivex</groupId>
+            <artifactId>rxjava</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.apef</groupId>
+            <artifactId>apef-testing</artifactId>
+        </dependency>
+    </dependencies>
+</project>

@@ -1,0 +1,15 @@
+<application-exceptions>
+    <global appCode="0" className="io.apef.base.exception.GeneralErrorCodes">
+        <errCodes>
+            <INCOMPLETE_MSG severity="MODERATE" errCode="00000" message="time out"/>
+        </errCodes>
+    </global>
+    <applications>
+        <application1 appCode="1" className="org.test.application.AppErrorCode">
+            <errCodes>
+                <!--severity: MILD, MODERATE, SEVERE -->
+                <TIMEOUT severity="MILD" errCode="00000" message="time out"/>
+            </errCodes>
+        </application1>
+    </applications>
+</application-exceptions>

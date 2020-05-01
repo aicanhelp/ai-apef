@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <test-app>
+        <name2>b1</name2>
+        <sub>
+            <test1>
+                <name>test1</name>
+                <count>1</count>
+            </test1>
+            <test2>
+                <name>test2</name>
+                <count>2</count>
+            </test2>
+        </sub>
+    </test-app>
+</root>

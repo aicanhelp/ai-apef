@@ -1,0 +1,34 @@
+<metrics-config>
+    <metricsApis rootContext="/metrics"/>
+    <metricsFactory>
+        <testMetric reporters="default">
+            <counters get="true" save="true" exists="true" getAll="true" putAll="true"/>
+            <timers get="true" save="true" exists="true" getAll="true" putAll="true"/>
+            <meters get="true" save="true" exists="true" getAll="true" putAll="true"/>
+            <histograms get="true" save="true" exists="true" getAll="true" putAll="true"/>
+        </testMetric>
+
+        <testMetric1 reporters="default">
+            <counters get="false" save="false" exists="false" getAll="false" putAll="false"/>
+            <timers get="false" save="false" exists="false" getAll="false" putAll="false"/>
+            <meters get="false" save="false" exists="false" getAll="false" putAll="false"/>
+            <histograms get="false" save="false" exists="false" getAll="false" putAll="false"/>
+        </testMetric1>
+    </metricsFactory>
+
+    <reporters>
+        <slf4j>
+            <default enabled="true" reportInterval="60" rateUnit="SECONDS"
+                     durationUnit="SECONDS" logger="VEX"/>
+            <slf4j1 enabled="true" reportInterval="60" rateUnit="SECONDS"
+                    durationUnit="SECONDS" logger="Ads-Metrics"/>
+        </slf4j>
+
+        <ganglia>
+            <ganglia1 enabled="false" reportInterval="60" rateUnit="SECONDS"
+                      durationUnit="SECONDS" group="group" port="9988"
+                      mode="MULTICAST" ttl="30" version31="true" uuid="129849348377" tMax="60" dMax="0"/>
+        </ganglia>
+
+    </reporters>
+</metrics-config>

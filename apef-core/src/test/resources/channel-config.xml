@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<channel-config>
+    <name>testChannel</name>
+    <queueSize>1000</queueSize>
+    <maxConcurrency GET="10" SAVE="15"/>
+</channel-config>

@@ -1,0 +1,14 @@
+spring:
+  profiles: ex-production
+test-app:
+  name1: dddd
+  types: T1,T2
+  subItems: item1,item2
+  itemTypeMap:
+    T1: item_t1
+    T2: item_T2
+  sub:
+#    name: test
+    test4:
+      name: test4
+      count: 4
