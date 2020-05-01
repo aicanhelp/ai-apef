@@ -44,7 +44,7 @@
         <fabric8-mockwebserver.version>0.0.12</fabric8-mockwebserver.version>
 
         <fasterxml-uuid.version>3.1.4</fasterxml-uuid.version>
-        <fastjson.version>1.2.8</fastjson.version>
+        <fastjson.version>1.2.25</fastjson.version>
         <fongo.version>2.0.7</fongo.version>
 
         <geronimo-javamail.version>1.7.1</geronimo-javamail.version>
