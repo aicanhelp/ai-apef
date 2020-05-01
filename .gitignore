@@ -32,3 +32,4 @@ dist/
 **/*.iml
 .vertx
 build/
+.factorypath
