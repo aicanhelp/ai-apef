@@ -1,10 +1,12 @@
 package io.apef.base.config.utils;
 
-import io.apef.base.config.spring.CustomPropertiesConfigurationFactory;
 import io.apef.base.config.spring.XmlPropertySourceLoader;
+import org.apache.commons.collections4.IteratorUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.context.properties.bind.Binder;
+import org.springframework.boot.context.properties.source.ConfigurationPropertySources;
 import org.springframework.boot.env.PropertiesPropertySourceLoader;
 import org.springframework.boot.env.PropertySourceLoader;
 import org.springframework.boot.env.YamlPropertySourceLoader;
@@ -40,10 +42,10 @@ public class ConfigurationLoader {
             }
 
             try {
-                PropertySource<?> propertySource = propertySourceLoader(confFile)
-                        .load(confFile, classPathResource, null);
+                List<PropertySource<?>> propertySource = propertySourceLoader(confFile)
+                        .load(confFile, classPathResource);
                 if (propertySource != null)
-                    propertySources.addFirst(propertySource);
+                    propertySources.addFirst(propertySource.get(0));
             } catch (Exception ex) {
                 log.error("Failed to load configuration file: " + confFile, ex);
             }
@@ -77,13 +79,13 @@ public class ConfigurationLoader {
         if (confFiles == null) return null;
         Object target = null;
         try {
-            target = tClass.newInstance();
-            CustomPropertiesConfigurationFactory<Object> factory = new CustomPropertiesConfigurationFactory<>(
-                    target, propertyEditors);
-
-            factory.setIgnoreInvalidFields(false);
-            factory.setIgnoreUnknownFields(true);
-            factory.setExceptionIfInvalid(true);
+//            target = tClass.newInstance();
+//            CustomPropertiesConfigurationFactory<Object> factory = new CustomPropertiesConfigurationFactory<>(
+//                    target, propertyEditors);
+//
+//            factory.setIgnoreInvalidFields(false);
+//            factory.setIgnoreUnknownFields(true);
+//            factory.setExceptionIfInvalid(true);
             MutablePropertySources propertySources = propertySources(warningNotFound, confFiles);
 
             if (envPropertyPrefix == null || envPropertyPrefix.isEmpty()) {
@@ -111,14 +113,17 @@ public class ConfigurationLoader {
 
             propertySources.addFirst(new MapPropertySource("System_Env", (Map) System.getenv()));
 
-            factory.setPropertySources(propertySources);
-            factory.bindPropertiesToTarget();
+            Binder binder = new Binder(ConfigurationPropertySources.from(IteratorUtils.asIterable(propertySources.iterator())));
+            return binder.bind("propertyclass", tClass).get();
+
+//            factory.setPropertySources(propertySources);
+//            factory.bindPropertiesToTarget();
         } catch (Exception ex) {
             log.error("Failed to load configuration files: {}", confFiles, ex);
             return null;
         }
 
-        return (T) target;
+//        return (T) target;
     }
 
     public static <T> T loadConfiguration(Class<T> tClass, Map<Class, PropertyEditor> propertyEditors,

@@ -1,5 +1,6 @@
 package io.apef.base.config.spring;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -14,7 +15,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
 
-@ActiveProfiles({"default","production","ex-production"})
+@ActiveProfiles({"default", "production", "ex-production"})
 @TestPropertySource(properties = {
         "spring.config.name = test-app-config",
         "spring.config.location = classpath:spring/",
@@ -22,14 +23,16 @@ import static org.testng.Assert.*;
 })
 @ContextConfiguration(classes = XmlPropertySourceLoaderTest.ContextConfig.class,
         initializers = ConfigFileApplicationContextInitializer.class)
+@Slf4j
 public class XmlPropertySourceLoaderTest extends AbstractTestNGSpringContextTests {
     @Autowired
     protected MainConfiguration mainConfiguration;
 
     @Test
     public void test1() {
-        logger.info("before print:  -------------");
-        logger.info(mainConfiguration);
+
+        log.info("before print:  -------------");
+        log.info(mainConfiguration.toString());
         assertEquals(mainConfiguration.getName2(), "b1");
         assertEquals(mainConfiguration.getSub().size(), 4);
     }

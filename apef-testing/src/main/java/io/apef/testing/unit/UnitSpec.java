@@ -1,5 +1,6 @@
 package io.apef.testing.unit;
 
+import com.google.common.collect.Iterators;
 import io.apef.testing.utils.XmlPropertySourceLoader;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,10 +8,13 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufInputStream;
 import io.vertx.core.Vertx;
+import org.apache.commons.collections4.IteratorUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.bind.PropertiesConfigurationFactory;
+import org.springframework.boot.context.properties.bind.Binder;
+import org.springframework.boot.context.properties.source.ConfigurationPropertySource;
+import org.springframework.boot.context.properties.source.ConfigurationPropertySources;
 import org.springframework.boot.env.PropertiesPropertySourceLoader;
 import org.springframework.boot.env.PropertySourceLoader;
 import org.springframework.boot.env.YamlPropertySourceLoader;
@@ -20,6 +24,10 @@ import org.springframework.core.io.ClassPathResource;
 
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Stream;
 
 public interface UnitSpec {
     Logger log = LoggerFactory.getLogger(UnitSpec.class);
@@ -43,10 +51,10 @@ public interface UnitSpec {
             }
 
             try {
-                PropertySource<?> propertySource = propertySourceLoader(confFile)
-                        .load(confFile, classPathResource, null);
-                if (propertySource != null)
-                    propertySources.addFirst(propertySource);
+                List<PropertySource<?>> propertySourceList = propertySourceLoader(confFile)
+                        .load(confFile, classPathResource);
+                if (propertySourceList != null)
+                    propertySources.addFirst(propertySourceList.get(0));
             } catch (Exception ex) {
                 log.info("Failed to load configuration file: {}, ex: {}", confFile, ex.getMessage());
             }
@@ -87,20 +95,25 @@ public interface UnitSpec {
         Object target;
         try {
             target = tClass.newInstance();
-            PropertiesConfigurationFactory<Object> factory = new PropertiesConfigurationFactory<>(
-                    target);
-            factory.setIgnoreInvalidFields(false);
-            factory.setIgnoreUnknownFields(false);
-            factory.setExceptionIfInvalid(true);
+
+
+//            PropertiesConfigurationFactory<Object> factory = new PropertiesConfigurationFactory<>(
+//                    target);
+//            factory.setIgnoreInvalidFields(false);
+//            factory.setIgnoreUnknownFields(false);
+//            factory.setExceptionIfInvalid(true);
             MutablePropertySources propertySources = propertySources(confFiles);
-            factory.setPropertySources(propertySources);
-            factory.bindPropertiesToTarget();
+
+            Binder binder = new Binder(ConfigurationPropertySources.from(IteratorUtils.asIterable(propertySources.iterator())));
+            return binder.bind("propertyclass", tClass).get();
+//            factory.setPropertySources(propertySources);
+//            factory.bindPropertiesToTarget();
         } catch (Exception ex) {
             log.info("Failed to load configuration files: {}, ex: {}", confFiles, ex);
             return null;
         }
 
-        return (T) target;
+//        return (T) target;
     }
 
     /**

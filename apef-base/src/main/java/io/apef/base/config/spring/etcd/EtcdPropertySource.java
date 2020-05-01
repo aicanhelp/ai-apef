@@ -1,10 +1,9 @@
 package io.apef.base.config.spring.etcd;
 
+import lombok.extern.slf4j.Slf4j;
 import mousio.etcd4j.EtcdClient;
 import mousio.etcd4j.responses.EtcdException;
 import mousio.etcd4j.responses.EtcdKeysResponse;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.core.env.EnumerablePropertySource;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
@@ -12,10 +11,8 @@ import org.springframework.util.StringUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-
+@Slf4j
 public class EtcdPropertySource extends EnumerablePropertySource<EtcdClient> {
-
-    private static final Log log = LogFactory.getLog(EtcdPropertySource.class);
 
     private final Map<String, String> properties;
     private final String prefix;

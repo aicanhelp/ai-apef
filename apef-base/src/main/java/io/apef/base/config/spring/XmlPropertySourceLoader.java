@@ -8,6 +8,8 @@ import org.springframework.core.env.PropertySource;
 import org.springframework.core.io.Resource;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 import java.util.Properties;
 
 public class XmlPropertySourceLoader implements PropertySourceLoader, PriorityOrdered {
@@ -17,13 +19,13 @@ public class XmlPropertySourceLoader implements PropertySourceLoader, PriorityOr
     }
 
     @Override
-    public PropertySource<?> load(String name, Resource resource, String profile) throws IOException {
-        if (profile == null) {
-            Properties properties = Xml2Properties.load(resource.getInputStream());
-            if (!properties.isEmpty()) {
-                return new PropertiesPropertySource(name, properties);
-            }
+    public List<PropertySource<?>> load(String name, Resource resource) throws IOException {
+
+        Properties properties = Xml2Properties.load(resource.getInputStream());
+        if (!properties.isEmpty()) {
+            return Collections.singletonList(new PropertiesPropertySource(name, properties));
         }
+
         return null;
     }
 
