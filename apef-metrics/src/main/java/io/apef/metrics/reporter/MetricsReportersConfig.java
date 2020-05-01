@@ -4,7 +4,6 @@ import io.apef.base.config.factory.XCompositeConfig;
 import io.apef.base.utils.ObjectFormatter;
 import io.apef.metrics.reporter.cassandra.CassandraReporterConfig;
 import io.apef.metrics.reporter.elasticsearch.ElasticSearchReporterConfig;
-import io.apef.metrics.reporter.ganglia.GangliaReporterConfig;
 import io.apef.metrics.reporter.http.HttpReporterConfig;
 import io.apef.metrics.reporter.kafka.KafkaReporterConfig;
 import io.apef.metrics.reporter.mongo.MongoReporterConfig;
@@ -24,7 +23,6 @@ import java.util.concurrent.TimeUnit;
 @EqualsAndHashCode(callSuper = false)
 public class MetricsReportersConfig extends XCompositeConfig {
     private Map<String, Slf4jReporterConfig> slf4j = new HashMap<>();
-    private Map<String, GangliaReporterConfig> ganglia = new HashMap<>();
     private Map<String, GraphiteReporterConfig> graphite = new HashMap<>();
     private Map<String, CassandraReporterConfig> cassandra = new HashMap<>();
     private Map<String, ElasticSearchReporterConfig> elasticSearch = new HashMap<>();
@@ -37,7 +35,6 @@ public class MetricsReportersConfig extends XCompositeConfig {
 
     public void validate() {
         this.setToAll(this.slf4j)
-                .setToAll(this.ganglia)
                 .setToAll(this.graphite)
                 .setToAll(this.cassandra)
                 .setToAll(this.elasticSearch)

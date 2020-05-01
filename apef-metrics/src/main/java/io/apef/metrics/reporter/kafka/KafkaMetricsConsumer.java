@@ -1,19 +1,19 @@
 package io.apef.metrics.reporter.kafka;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import kafka.consumer.*;
-import kafka.message.MessageAndMetadata;
-import kafka.serializer.StringDecoder;
+import org.apache.kafka.clients.consumer.*;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Properties;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class KafkaMetricsConsumer {
     private static final Logger log = LoggerFactory.getLogger(KafkaMetricsConsumer.class);
-    private ConsumerConnector consumerConnector;
-    private KafkaStream<String, String> messageStream;
+    private KafkaConsumer kafkaConsumer;
     private ObjectMapper mapper = new ObjectMapper();
     private AtomicBoolean stopped = new AtomicBoolean(false);
 
@@ -26,28 +26,25 @@ public abstract class KafkaMetricsConsumer {
                                 boolean readFromStartOfStream) {
         Properties props = new Properties();
         props.put("group.id", groupId);
-        props.put("zookeeper.connect", zkConnect);
-        props.put("auto.offset.reset", readFromStartOfStream ? "smallest" : "largest");
-        props.put("zookeeper.session.timeout.ms", String.valueOf(zkSessionTimeoutMs));
+        props.put("bootstrap.servers", zkConnect);
+        props.put("enable.auto.commit", "true");
+        props.put("auto.commit.interval.ms", "1000");
+        props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 
-        ConsumerConfig config = new ConsumerConfig(props);
-        consumerConnector = Consumer.create(config);
-        TopicFilter filterSpec = new Whitelist(topic);
+        kafkaConsumer = new KafkaConsumer<>(props);
+        kafkaConsumer.subscribe(Collections.singletonList(topic));
 
-        log.info("Trying to start consumer: topic=%s for zk=%s and groupId=%s".format(topic, zkConnect, groupId));
-        messageStream = consumerConnector.createMessageStreamsByFilter(filterSpec,
-                1,
-                new StringDecoder(null),
-                new StringDecoder(null)).head();
         log.info("Started consumer: topic=%s for zk=%s and groupId=%s".format(topic, zkConnect, groupId));
     }
 
     public void start() {
         new Thread(() -> {
             log.info("reading on stream now");
-            for (MessageAndMetadata<String, String> messageAndTopic : messageStream) {
+            ConsumerRecords<String, String> records = kafkaConsumer.poll(100);
+            for (ConsumerRecord<String, String> record : records) {
                 try {
-                    KafkaMetricsReport report = mapper.readValue(messageAndTopic.message(), KafkaMetricsReport.class);
+                    KafkaMetricsReport report = mapper.readValue(record.value(), KafkaMetricsReport.class);
                     this.consumeReport(report);
                 } catch (Throwable e) {
                     if (stopped.get()) {
@@ -58,6 +55,8 @@ public abstract class KafkaMetricsConsumer {
                     }
                 }
             }
+
+
         }).start();
     }
 
@@ -65,7 +64,7 @@ public abstract class KafkaMetricsConsumer {
 
     public void stop() {
         log.info("Trying to stop consumer");
-        consumerConnector.shutdown();
+        kafkaConsumer.close();
         stopped.set(true);
         log.info("Consumer has been stopped");
     }

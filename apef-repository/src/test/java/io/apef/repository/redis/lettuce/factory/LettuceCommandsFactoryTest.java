@@ -1,6 +1,6 @@
 package io.apef.repository.redis.lettuce.factory;
 
-import com.lambdaworks.redis.codec.ByteArrayCodec;
+import io.lettuce.core.codec.ByteArrayCodec;
 import io.apef.testing.unit.BaseUnitSpec;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;

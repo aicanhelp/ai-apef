@@ -1,11 +1,11 @@
 package io.apef.repository.redis.lettuce;
 
 import io.apef.testing.unit.BaseUnitSpec;
-import com.lambdaworks.redis.*;
-import com.lambdaworks.redis.cluster.ClusterClientOptions;
-import com.lambdaworks.redis.cluster.ClusterTopologyRefreshOptions;
-import com.lambdaworks.redis.cluster.RedisClusterClient;
-import com.lambdaworks.redis.cluster.api.async.RedisAdvancedClusterAsyncCommands;
+import io.lettuce.core.*;
+import io.lettuce.core.cluster.ClusterClientOptions;
+import io.lettuce.core.cluster.ClusterTopologyRefreshOptions;
+import io.lettuce.core.cluster.RedisClusterClient;
+import io.lettuce.core.cluster.api.async.RedisAdvancedClusterAsyncCommands;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
@@ -50,7 +50,7 @@ public class RedisFunctionTest extends AbstractRedisRepositoryTest {
             blockingMs(1);
             if (System.currentTimeMillis() - startTime > 60000) break;
         }
-        asyncCommands.close();
+        asyncCommands.shutdown(true);
     }
 
     private RedisAdvancedClusterAsyncCommands<String, String> asyncCommands2() {

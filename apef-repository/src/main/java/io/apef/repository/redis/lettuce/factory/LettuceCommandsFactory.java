@@ -1,13 +1,13 @@
 package io.apef.repository.redis.lettuce.factory;
 
-import com.lambdaworks.redis.AbstractRedisAsyncCommands;
-import com.lambdaworks.redis.ClientOptions;
-import com.lambdaworks.redis.RedisClient;
-import com.lambdaworks.redis.RedisURI;
-import com.lambdaworks.redis.cluster.ClusterClientOptions;
-import com.lambdaworks.redis.cluster.ClusterTopologyRefreshOptions;
-import com.lambdaworks.redis.cluster.RedisClusterClient;
-import com.lambdaworks.redis.codec.RedisCodec;
+import io.lettuce.core.AbstractRedisAsyncCommands;
+import io.lettuce.core.ClientOptions;
+import io.lettuce.core.RedisClient;
+import io.lettuce.core.RedisURI;
+import io.lettuce.core.cluster.ClusterClientOptions;
+import io.lettuce.core.cluster.ClusterTopologyRefreshOptions;
+import io.lettuce.core.cluster.RedisClusterClient;
+import io.lettuce.core.codec.RedisCodec;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;

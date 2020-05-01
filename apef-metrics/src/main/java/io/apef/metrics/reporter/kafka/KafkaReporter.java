@@ -3,12 +3,12 @@ package io.apef.metrics.reporter.kafka;
 import com.codahale.metrics.*;
 import com.codahale.metrics.json.MetricsModule;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import kafka.javaapi.producer.Producer;
-import kafka.producer.KeyedMessage;
-import kafka.producer.ProducerConfig;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.apache.kafka.clients.producer.KafkaProducer;
+
+import org.apache.kafka.clients.producer.ProducerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 public class KafkaReporter extends ScheduledReporter {
     private static final Logger log = LoggerFactory.getLogger(KafkaReporter.class);
 
-    private final Producer<String, String> kafkaProducer;
+    private final KafkaProducer<String, String> kafkaProducer;
     private final String kafkaTopic;
     private final ObjectMapper mapper;
     private final MetricRegistry registry;
@@ -43,7 +43,7 @@ public class KafkaReporter extends ScheduledReporter {
                 durationUnit,
                 false));
         this.kafkaTopic = kafkaTopic;
-        kafkaProducer = new Producer<String, String>(new ProducerConfig(kafkaProperties));
+        kafkaProducer = new KafkaProducer<String, String>(kafkaProperties);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class KafkaReporter extends ScheduledReporter {
             StringWriter report = new StringWriter();
             mapper.writeValue(report, registry);
             log.debug("Created metrics report: {}", report);
-            kafkaProducer.send(new KeyedMessage<String, String>(kafkaTopic, report.toString()));
+            kafkaProducer.send(new ProducerRecord<>(kafkaTopic, report.toString()));
             log.info("Metrics were successfully reported to Kafka kafkaTopic {}", kafkaTopic);
         } catch (IOException e) {
             throw new RuntimeException(e.getMessage(), e);

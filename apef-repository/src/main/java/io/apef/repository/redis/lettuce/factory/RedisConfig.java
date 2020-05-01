@@ -1,6 +1,6 @@
 package io.apef.repository.redis.lettuce.factory;
 
-import com.lambdaworks.redis.ClientOptions;
+import io.lettuce.core.ClientOptions;
 import lombok.Data;
 import lombok.experimental.Accessors;
 

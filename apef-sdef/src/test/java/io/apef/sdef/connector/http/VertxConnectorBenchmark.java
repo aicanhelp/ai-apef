@@ -57,7 +57,7 @@ public class VertxConnectorBenchmark extends BaseUnitSpec {
         }
 
         public HttpClient httpClient() {
-            if (EventLoopContext.isOnVertxThread()) {
+            if (EventLoopContext.context().isEventLoopContext()) {
                 return current;
             }
 

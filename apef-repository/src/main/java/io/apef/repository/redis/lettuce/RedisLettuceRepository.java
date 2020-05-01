@@ -4,7 +4,7 @@ import io.apef.base.utils.Expiration;
 import io.apef.base.utils.KeyMapper;
 import io.apef.base.utils.KeyValueMerger;
 import io.apef.repository.AbstractRepository;
-import com.lambdaworks.redis.AbstractRedisAsyncCommands;
+import io.lettuce.core.AbstractRedisAsyncCommands;
 
 public class RedisLettuceRepository<K, V> extends AbstractRepository<K, V> {
     public RedisLettuceRepository(RedisRepositoryConfig repositoryConfig,

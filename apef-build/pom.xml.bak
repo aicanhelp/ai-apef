@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.apef</groupId>
     <artifactId>apef-build</artifactId>
@@ -7,6 +8,8 @@
     <packaging>pom</packaging>
     <name>APEF Build Module - Dependency Management</name>
     <properties>
+        <!-- END: Maven Properties -->
+
         <additionalparam>-Xdoclint:none</additionalparam>
 
         <annotations-api.version>6.0.45</annotations-api.version>
@@ -15,43 +18,43 @@
 
         <bval-jsr303.version>0.5</bval-jsr303.version>
         <bval.version>1.1.1</bval.version>
-        <caffeine.version>2.3.5</caffeine.version>
+        <caffeine.version>2.8.2</caffeine.version>
 
-        <cassandra-driver.version>2.1.2</cassandra-driver.version>
+        <cassandra-driver.version>3.7.1</cassandra-driver.version>
         <cglib.version>3.2.2</cglib.version>
-        <commons-codec.version>1.10</commons-codec.version>
-        <commons-collections.version>3.2.1</commons-collections.version>
-        <commons-collections4.version>4.1</commons-collections4.version>
-        <commons-io.version>2.4</commons-io.version>
+        <commons-codec.version>1.11</commons-codec.version>
+        <commons-collections.version>3.2.2</commons-collections.version>
+        <commons-collections4.version>4.2</commons-collections4.version>
+        <commons-io.version>2.6</commons-io.version>
         <commons-lang3.version>3.5</commons-lang3.version>
         <commons-pool.version>1.6</commons-pool.version>
-        <cors-filter.version>1.0.0</cors-filter.version>
-        <curator.version>2.8.0</curator.version>
+        <cors-filter.version>1.0.1</cors-filter.version>
+        <curator.version>2.12.0</curator.version>
         <cxf-core.version>3.1.3</cxf-core.version>
 
-        <disruptor.version>3.3.4</disruptor.version>
+        <disruptor.version>3.3.6</disruptor.version>
 
-        <eaio-uuid.version>3.2</eaio-uuid.version>
+        <eaio-uuid.version>3.3</eaio-uuid.version>
         <ehcache.version>2.6.11</ehcache.version>
         <embedded-redis.version>0.6</embedded-redis.version>
         <enforcer.failFast>true</enforcer.failFast>
         <enforcer.ignoreCache>true</enforcer.ignoreCache>
-        <etcd4j.version>2.13.0</etcd4j.version>
-        <fabric8-kubernetes-client.version>2.2.1</fabric8-kubernetes-client.version>
+        <etcd4j.version>2.16.0</etcd4j.version>
+        <fabric8-kubernetes-client.version>2.6.3</fabric8-kubernetes-client.version>
         <fabric8-mockwebserver.version>0.0.12</fabric8-mockwebserver.version>
 
         <fasterxml-uuid.version>3.1.4</fasterxml-uuid.version>
-        <fastjson.version>1.2.25</fastjson.version>
+        <fastjson.version>1.2.56</fastjson.version>
         <fongo.version>2.0.7</fongo.version>
 
         <geronimo-javamail.version>1.7.1</geronimo-javamail.version>
         <geronimo-servlet.version>1.0</geronimo-servlet.version>
         <grizzly-memcached.version>1.3.11</grizzly-memcached.version>
-        <guava.version>19.0</guava.version>
+        <guava.version>25.0-jre</guava.version>
 
         <hamcrest.version>1.3</hamcrest.version>
         <hazelcast.version>3.7.2</hazelcast.version>
-        <hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
+        <hibernate-validator.version>5.3.6.Final</hibernate-validator.version>
         <httpasyncclient.version>4.1.1</httpasyncclient.version>
         <httpclient.version>4.4.1</httpclient.version>
 
@@ -72,21 +75,21 @@
         <jedis.version>2.9.0</jedis.version>
         <jetty.version>9.3.3.v20150827</jetty.version>
         <jmemcached.version>1.0.0</jmemcached.version>
-        <jmh.version>1.15</jmh.version>
-        <joda-time.version>2.9.3</joda-time.version>
+        <jmh.version>1.23</jmh.version>
+        <joda-time.version>2.10.1</joda-time.version>
         <jopt-simple.version>4.9</jopt-simple.version>
         <jsr311-api.version>1.1.1</jsr311-api.version>
         <junit.version>4.12</junit.version>
 
-        <kafka.version>0.8.1.1</kafka.version>
+        <kafka.version>2.5.0</kafka.version>
         <kryo.version>4.0.0</kryo.version>
 
-        <lettuce.version>4.3.2.Final</lettuce.version>
-        <logback.version>1.1.7</logback.version>
-        <lombok.version>1.16.16</lombok.version>
+        <lettuce.version>5.3.0.RELEASE</lettuce.version>
+        <logback.version>1.2.3</logback.version>
+        <lombok.version>1.18.6</lombok.version>
         <lz4.version>1.3.0</lz4.version>
+        <!-- START: Maven Properties -->
         <maven.assembly.plugin>2.6</maven.assembly.plugin>
-
         <maven.build.timestamp.format>yyyy-MM-dd hh:mm:ss Z</maven.build.timestamp.format>
         <maven.buildversion.plugin.version>1.0.3</maven.buildversion.plugin.version>
         <maven.cargo.plugin>1.4.19</maven.cargo.plugin>
@@ -100,12 +103,11 @@
         <maven.failsafe.plugin>2.19.1</maven.failsafe.plugin>
         <maven.frontend.plugin>0.0.23</maven.frontend.plugin>
         <maven.install.plugin>2.5.2</maven.install.plugin>
-        <maven.jar.plugin>2.6</maven.jar.plugin>
         <maven.jar.plugin>2.4</maven.jar.plugin>
+        <maven.jar.plugin>2.6</maven.jar.plugin>
         <maven.javadoc.plugin>2.8.1</maven.javadoc.plugin>
         <maven.jxr.plugin>2.3</maven.jxr.plugin>
 
-        <!-- Maven Properties -->
         <maven.min.version>3.0.4</maven.min.version>
         <maven.os.plugin>1.5.0.Final</maven.os.plugin>
         <maven.os.plugin>1.5.0.Final</maven.os.plugin>
@@ -116,36 +118,37 @@
         <maven.resources.plugin>2.7</maven.resources.plugin>
         <maven.site.plugin>3.5.1</maven.site.plugin>
         <maven.sortpom.plugin>2.5.0</maven.sortpom.plugin>
-        <maven.surefire.plugin>2.19.1</maven.surefire.plugin>
         <maven.surefire.plugin>2.20</maven.surefire.plugin>
+        <maven.surefire.plugin>2.19.1</maven.surefire.plugin>
         <maven.versions.plugin>2.2</maven.versions.plugin>
         <maven.war.plugin>2.6</maven.war.plugin>
 
-        <metrics.version>3.1.2</metrics.version>
-        <mockito.version>2.8.47</mockito.version>
+        <metrics.version>4.0.5</metrics.version>
+        <mockito.version>2.23.4</mockito.version>
         <mongo-driver.version>3.2.2</mongo-driver.version>
-        <netty-tcnative.version>1.1.33.Fork26</netty-tcnative.version>
+        <netty-tcnative.version>2.0.0.Final</netty-tcnative.version>
 
         <netty.version>4.1.49.Final</netty.version>
 
-        <objenesis.version>2.2</objenesis.version>
+        <objenesis.version>2.6</objenesis.version>
         <pdfbox.version>2.0.15</pdfbox.version>
         <plexus.version>1.5.6</plexus.version>
-        <powermock.version>1.6.5</powermock.version>
+        <powermock.version>1.7.4</powermock.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <prometheus-client.version>0.0.20</prometheus-client.version>
-        <protostuff.version>1.5.2</protostuff.version>
+        <prometheus-client.version>0.8.1</prometheus-client.version>
+        <protostuff.version>1.7.2</protostuff.version>
         <redisson.version>3.4.1</redisson.version>
 
         <reflections-version>0.9.10</reflections-version>
-        <rxjava.version>1.3.0</rxjava.version>
-        <rxjava2.version>2.1.2</rxjava2.version>
+        <rxjava.version>1.3.8</rxjava.version>
+        <rxjava2.version>2.2.7</rxjava2.version>
+        <rxjava3.version>3.0.2</rxjava3.version>
         <rxnetty.version>0.5.1</rxnetty.version>
 
-        <scala.version>2.10.3</scala.version>
-        <slf4j.version>1.7.21</slf4j.version>
-        <snakeyaml.version>1.17</snakeyaml.version>
+        <scala.version>2.13.2</scala.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <snakeyaml.version>1.24</snakeyaml.version>
         <snappy.version>1.1.2.6</snappy.version>
         <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
         <spring-data-mongo.version>1.9.0.RELEASE</spring-data-mongo.version>
@@ -155,7 +158,7 @@
         <spy.version>2.12.1</spy.version>
         <swagger.version>1.5.4</swagger.version>
 
-        <testng.version>6.9.10</testng.version>
+        <testng.version>6.13.1</testng.version>
 
         <urlrewritefilter.version>4.0.3</urlrewritefilter.version>
 
@@ -166,29 +169,10 @@
         <xmemcached.version>2.0.0</xmemcached.version>
         <xmlschema.version>2.2.1</xmlschema.version>
 
-        <zookeeper.version>3.4.14</zookeeper.version>
+        <zookeeper.version>3.5.7</zookeeper.version>
     </properties>
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>biz.paluch.redis</groupId>
-                <artifactId>lettuce</artifactId>
-                <version>${lettuce.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>netty-common</artifactId>
-                        <groupId>io.netty</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>netty-handler</artifactId>
-                        <groupId>io.netty</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>netty-transport</artifactId>
-                        <groupId>io.netty</groupId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
 
             <dependency>
                 <groupId>cglib</groupId>
@@ -324,25 +308,11 @@
                 <version>${guava.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.googlecode.xmemcached</groupId>
-                <artifactId>xmemcached</artifactId>
-                <version>${xmemcached.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.hazelcast</groupId>
-                <artifactId>hazelcast-all</artifactId>
-                <version>${hazelcast.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>com.lmax</groupId>
                 <artifactId>disruptor</artifactId>
                 <version>${disruptor.version}</version>
             </dependency>
-            <dependency>
-                <groupId>com.thimbleware.jmemcached</groupId>
-                <artifactId>jmemcached-core</artifactId>
-                <version>${jmemcached.version}</version>
-            </dependency>
+
             <dependency>
                 <groupId>commons-codec</groupId>
                 <artifactId>commons-codec</artifactId>
@@ -366,11 +336,6 @@
             <dependency>
                 <groupId>io.dropwizard.metrics</groupId>
                 <artifactId>metrics-core</artifactId>
-                <version>${metrics.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.dropwizard.metrics</groupId>
-                <artifactId>metrics-ganglia</artifactId>
                 <version>${metrics.version}</version>
             </dependency>
             <dependency>
@@ -413,6 +378,11 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
+                <groupId>io.lettuce</groupId>
+                <artifactId>lettuce-core</artifactId>
+                <version>${lettuce.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>io.netty</groupId>
                 <artifactId>netty-all</artifactId>
                 <version>${netty.version}</version>
@@ -430,18 +400,37 @@
                 <artifactId>netty-transport-native-epoll</artifactId>
                 <version>${netty.version}</version>
             </dependency>
+            <dependency>
+                <groupId>io.prometheus</groupId>
+                <artifactId>simpleclient</artifactId>
+                <version>${prometheus-client.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>io.prometheus</groupId>
                 <artifactId>simpleclient_dropwizard</artifactId>
                 <version>${prometheus-client.version}</version>
             </dependency>
+            <!-- Hotspot JVM metrics-->
+            <dependency>
+                <groupId>io.prometheus</groupId>
+                <artifactId>simpleclient_hotspot</artifactId>
+                <version>${prometheus-client.version}</version>
+            </dependency>
+            <!-- Exposition HTTPServer-->
+            <dependency>
+                <groupId>io.prometheus</groupId>
+                <artifactId>simpleclient_httpserver</artifactId>
+                <version>${prometheus-client.version}</version>
+            </dependency>
 
+            <!-- Pushgateway exposition-->
             <dependency>
                 <groupId>io.prometheus</groupId>
                 <artifactId>simpleclient_pushgateway</artifactId>
                 <version>${prometheus-client.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>io.protostuff</groupId>
                 <artifactId>protostuff-api</artifactId>
@@ -518,6 +507,11 @@
                 <groupId>io.reactivex.rxjava2</groupId>
                 <artifactId>rxjava</artifactId>
                 <version>${rxjava2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.reactivex.rxjava3</groupId>
+                <artifactId>rxjava</artifactId>
+                <version>${rxjava3.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.swagger</groupId>
@@ -797,42 +791,10 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.kafka</groupId>
-                <artifactId>kafka_2.10</artifactId>
+                <artifactId>kafka-clients</artifactId>
                 <version>${kafka.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>scala-compiler</artifactId>
-                        <groupId>org.scala-lang</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>scala-library</artifactId>
-                        <groupId>org.scala-lang</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>zookeeper</artifactId>
-                        <groupId>org.apache.zookeeper</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>log4j</artifactId>
-                        <groupId>log4j</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>slf4j-api</artifactId>
-                        <groupId>org.slf4j</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>jopt-simple</artifactId>
-                        <groupId>net.sf.jopt-simple</groupId>
-                    </exclusion>
-                </exclusions>
             </dependency>
-            <dependency>
-                <groupId>org.apache.kafka</groupId>
-                <artifactId>kafka_2.10</artifactId>
-                <version>${kafka.version}</version>
-                <classifier>test</classifier>
-                <scope>test</scope>
-            </dependency>
+            
             <dependency>
                 <groupId>org.apache.pdfbox</groupId>
                 <artifactId>pdfbox</artifactId>

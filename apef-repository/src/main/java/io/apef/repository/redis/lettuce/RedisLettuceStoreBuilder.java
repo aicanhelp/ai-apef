@@ -9,8 +9,8 @@ import io.apef.repository.channel.RepositoryChannelStore;
 import io.apef.repository.utils.RepositoryMetricsContext;
 import io.apef.metrics.Metricable;
 import com.google.common.base.Preconditions;
-import com.lambdaworks.redis.AbstractRedisAsyncCommands;
-import com.lambdaworks.redis.RedisFuture;
+import io.lettuce.core.AbstractRedisAsyncCommands;
+import io.lettuce.core.RedisFuture;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
@@ -157,7 +157,7 @@ class RedisLettuceRepositoryStore<K, V> extends RedisLettuceStoreBuilder<K, V>
                         if (throwable == null) {
                             int index = 0;
                             for (K key : keys) {
-                                V value = vs.get(index++);
+                                V value = vs.get(index++).getValue();
                                 if (value != null)
                                     keyValueMerger.merge(key, value);
                                 values.put(key, value);

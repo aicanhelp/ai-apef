@@ -7,7 +7,7 @@ import io.apef.repository.redis.lettuce.factory.RedisConfig;
 import io.apef.testing.unit.BaseUnitSpec;
 import io.apef.repository.RepositoryTestBase;
 import io.apef.repository.redis.RedisMockServer;
-import com.lambdaworks.redis.AbstractRedisAsyncCommands;
+import io.lettuce.core.AbstractRedisAsyncCommands;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.testng.annotations.AfterClass;
@@ -84,7 +84,7 @@ public abstract class AbstractRedisRepositoryTest extends BaseUnitSpec implement
         }
         try {
             if (asyncCommands != null)
-                asyncCommands.close();
+                asyncCommands.shutdown(true);
         } catch (Exception e) {
         }
         try {

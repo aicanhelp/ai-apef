@@ -6,7 +6,7 @@ import io.apef.base.serializer.DataSerializer;
 import io.apef.base.utils.Bytes;
 import io.apef.repository.channel.*;
 import io.apef.metrics.Metricable;
-import com.lambdaworks.redis.codec.RedisCodec;
+import io.lettuce.core.codec.RedisCodec;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Setter;

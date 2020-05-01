@@ -31,6 +31,11 @@ public class SimpleBodyHandler implements BodyHandler {
     }
 
     @Override
+    public BodyHandler setHandleFileUploads(boolean b) {
+        return null;
+    }
+
+    @Override
     public BodyHandler setBodyLimit(long bodyLimit) {
         return this;
     }
@@ -48,6 +53,11 @@ public class SimpleBodyHandler implements BodyHandler {
     @Override
     public BodyHandler setDeleteUploadedFilesOnEnd(boolean deleteUploadedFilesOnEnd) {
         return this;
+    }
+
+    @Override
+    public BodyHandler setPreallocateBodyBuffer(boolean b) {
+        return null;
     }
 
     private class BHandler implements Handler<Buffer> {
