@@ -58,7 +58,7 @@
         <httpasyncclient.version>4.1.1</httpasyncclient.version>
         <httpclient.version>4.4.1</httpclient.version>
 
-        <ignite.version>1.6.0</ignite.version>
+        <ignite.version>2.8.0</ignite.version>
 
         <jackson.version>2.11.0</jackson.version>
         <jacoco.version>0.7.6.201602180812</jacoco.version>
