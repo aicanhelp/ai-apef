@@ -60,7 +60,7 @@
 
         <ignite.version>1.6.0</ignite.version>
 
-        <jackson.version>2.6.3</jackson.version>
+        <jackson.version>2.11.0</jackson.version>
         <jacoco.version>0.7.6.201602180812</jacoco.version>
         <janino.version>2.6.1</janino.version>
         <jasper.version>6.0.45</jasper.version>
