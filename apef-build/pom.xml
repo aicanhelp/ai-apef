@@ -79,7 +79,7 @@
         <joda-time.version>2.10.1</joda-time.version>
         <jopt-simple.version>4.9</jopt-simple.version>
         <jsr311-api.version>1.1.1</jsr311-api.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
 
         <kafka.version>2.5.0</kafka.version>
         <kryo.version>4.0.0</kryo.version>
