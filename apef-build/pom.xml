@@ -131,7 +131,7 @@
         <netty.version>4.1.49.Final</netty.version>
 
         <objenesis.version>2.6</objenesis.version>
-        <pdfbox.version>2.0.15</pdfbox.version>
+        <pdfbox.version>2.0.24</pdfbox.version>
         <plexus.version>1.5.6</plexus.version>
         <powermock.version>1.7.4</powermock.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
