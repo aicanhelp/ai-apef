@@ -162,7 +162,7 @@
 
         <urlrewritefilter.version>4.0.3</urlrewritefilter.version>
 
-        <vertx.version>3.9.0</vertx.version>
+        <vertx.version>3.9.4</vertx.version>
 
         <wiremock.version>2.6.0</wiremock.version>
 
